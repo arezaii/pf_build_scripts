@@ -51,7 +51,7 @@ cd ${DOWNLOAD_DIR}/hdf5 && \
 wget ${HDF5_URL} && \
 tar -xf hdf5-${HDF5_VERSION}.tar.gz && \
 cd hdf5-${HDF5_VERSION} && \
-CC=mpicc ./configure \
+CC=mpicc CXX=mpicxx ./configure \
   --prefix=$HDF5_DIR \
   --enable-parallel && \
 make -j${CORE_COUNT} && make install -j${CORE_COUNT} && \
@@ -62,23 +62,23 @@ export LD_LIBRARY_PATH=$HDF5_DIR/lib:$LD_LIBRARY_PATH
 #
 # NetCDF
 #
-echo "Installing NetCDF"
-export NETCDF_DIR=${PARFLOW_LIB_DIR}/netcdf
-export NETCDF_VERSION=4.7.3
-export NETCDF_URL="https://github.com/Unidata/netcdf-c/archive/v$NETCDF_VERSION.tar.gz"
-mkdir -p $NETCDF_DIR
-mkdir -p ${DOWNLOAD_DIR}/netcdf
-cd ${DOWNLOAD_DIR}/netcdf
+#echo "Installing NetCDF"
+#export NETCDF_DIR=${PARFLOW_LIB_DIR}/netcdf
+#export NETCDF_VERSION=4.7.3
+#export NETCDF_URL="https://github.com/Unidata/netcdf-c/archive/v$NETCDF_VERSION.tar.gz"
+#mkdir -p $NETCDF_DIR
+#mkdir -p ${DOWNLOAD_DIR}/netcdf
+#cd ${DOWNLOAD_DIR}/netcdf
 
-wget ${NETCDF_URL} && \
-tar -xf v${NETCDF_VERSION}.tar.gz && \
-cd netcdf-c-${NETCDF_VERSION} && \
-CC=mpicc CPPFLAGS=-I${HDF5_DIR}/include LDFLAGS=-L${HDF5_DIR}/lib \
-./configure --disable-shared --disable-dap --prefix=${NETCDF_DIR} && \
-make -j${CORE_COUNT} && \
-make install -j${CORE_COUNT} && \
-cd ../.. && \
-rm -fr netcdf-c-$NETCDF_VERSION v$NETCDF_VERSION.tar.gz
+#wget ${NETCDF_URL} && \
+#tar -xf v${NETCDF_VERSION}.tar.gz && \
+#cd netcdf-c-${NETCDF_VERSION} && \
+#CC=mpicc CPPFLAGS=-I${HDF5_DIR}/include LDFLAGS=-L${HDF5_DIR}/lib \
+#./configure --disable-shared --disable-dap --prefix=${NETCDF_DIR} && \
+#make -j${CORE_COUNT} && \
+#make install -j${CORE_COUNT} && \
+#cd ../.. && \
+#rm -fr netcdf-c-$NETCDF_VERSION v$NETCDF_VERSION.tar.gz
 
 
 #
@@ -113,7 +113,7 @@ wget https://github.com/hypre-space/hypre/archive/v${HYPRE_VERSION}.tar.gz && \
 tar xf v${HYPRE_VERSION}.tar.gz && \
 cd hypre-${HYPRE_VERSION}/src && \
 ./configure --prefix=${HYPRE_DIR} \
-CC=mpicc && \
+CC=mpicc CXX=mpicxx && \
 make install -j${CORE_COUNT} && \
 cd ../.. && \
 rm -fr hypre-${HYPRE_VERSION} v${HYPRE_VERSION}.tar.gz
