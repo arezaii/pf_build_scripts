@@ -1,4 +1,8 @@
 #!/bin/bash
+if [ "$#" -ne 1]; then
+    echo "Usage: rebuild_parflow <directory>"
+    exit 2
+fi
 
 
 DIR=$1

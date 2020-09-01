@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ "$#" -ne 1 ]; then
+    echo "Usage: dl_and_build_libs <base_working_directory>"
+    exit 2
+fi
+
 # Setup the number of cores to build with
 export CORE_COUNT=2
 

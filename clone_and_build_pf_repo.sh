@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "$#" -ne 3 ]; then
-    echo "Usage: clone_and_build_parflow <directory> <repository> <branch>"
+    echo "Usage: clone_and_build_pf_repo <directory> <repository> <branch>"
     exit 2
 fi
 
@@ -12,6 +12,6 @@ BRANCH=$3
 
 
 
-./clone_pf_repo.sh $REPO $BRANCH $DIR
+./clone_pf_repo.sh $DIR $REPO $BRANCH 
 
 ./rebuild_parflow.sh $DIR

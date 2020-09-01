@@ -3,6 +3,10 @@
   #
   #
     
+    if [ "$#" -ne 2 ]; then
+        echo "Usage: build_parflow <pf_libs directory> <parflow_dir>"
+        exit 2
+    fi
 
     PFLIBS=$1
     PFDIR=$2
