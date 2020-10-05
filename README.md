@@ -107,3 +107,5 @@ and the resulting directory structure:
 ## Troubleshooting
 
 Access denied! - Make sure you specified a `<base_directory>` that is writeable. On shared environments, something under `scratch` or `home` would be appropriate.
+
+CMake version wrong! - Some systems have the cmake executable as cmake3, you can edit the build_parflow.sh script to modify the cmake command. Or you can download a newer version of cmake and update the PATH similar to the above description.
