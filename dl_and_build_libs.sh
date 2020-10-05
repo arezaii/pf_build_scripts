@@ -34,8 +34,8 @@ mkdir -p $OMPI_DIR
 cd ${DOWNLOAD_DIR}/ompi && wget -O openmpi-$OMPI_VERSION.tar.gz $OMPI_URL && tar -xf openmpi-$OMPI_VERSION.tar.gz
 # Compile and install
 cd ${DOWNLOAD_DIR}/ompi/openmpi-$OMPI_VERSION && ./configure --prefix=$OMPI_DIR && make install -j${CORE_COUNT}
-cd ../..
-rm -fr ompi openmpi-$OMPI_VERSION.tar.gz
+cd ../.. 
+#rm -fr ompi
 # Set env variables so we can
 # compile our application
 export PATH=$OMPI_DIR/bin:$PATH
@@ -60,8 +60,8 @@ CC=mpicc CXX=mpicxx ./configure \
   --prefix=$HDF5_DIR \
   --enable-parallel && \
 make -j${CORE_COUNT} && make install -j${CORE_COUNT} && \
-cd ../.. && \
-rm -fr hdf5-${HDF5_VERSION} hdf5-${HDF5_VERSION}.tar.gz
+cd ../..
+#rm -fr hdf5
 export LD_LIBRARY_PATH=$HDF5_DIR/lib:$LD_LIBRARY_PATH
 
 #
@@ -102,8 +102,8 @@ tar -xf silo-${SILO_VERSION}.tar.gz && \
 cd silo-${SILO_VERSION} && \
 ./configure  --prefix=$SILO_DIR --disable-silex --disable-hzip --disable-fpzip FC=/usr/bin/gfortran F77=/usr/bin/gfortran && \
 make install -j${CORE_COUNT} && \
-cd ../.. && \
-rm -fr silo-${SILO_VERSION} silo-${SILO_VERSION}.tar.gz
+cd ../..
+#rm -fr silo #-${SILO_VERSION} silo-${SILO_VERSION}.tar.gz
 
 
 #
@@ -120,5 +120,5 @@ cd hypre-${HYPRE_VERSION}/src && \
 ./configure --prefix=${HYPRE_DIR} \
 CC=mpicc CXX=mpicxx && \
 make install -j${CORE_COUNT} && \
-cd ../.. && \
-rm -fr hypre-${HYPRE_VERSION} v${HYPRE_VERSION}.tar.gz
+cd ../..
+#rm -fr hypre   #-${HYPRE_VERSION} v${HYPRE_VERSION}.tar.gz

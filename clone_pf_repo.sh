@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ "$#" -ne 2 ]; then
+if [ "$#" -ne 3 ]; then
     echo "Usage: clone_pf_repo <directory> <repository> <branch>"
     exit 2
 fi
@@ -10,10 +10,8 @@ BRANCH=$3
 
 
 if [ ! -d $DIR ]; then	 
-	 mkdir $DIR
+	 mkdir -p $DIR
 fi	
 cd $DIR
 git clone --single-branch --branch $BRANCH $GIT_URL parflow
-sed -e '376iset(CMAKE_C_FLAGS \"${CMAKE_C_FLAGS} -O2\")' -i parflow/CMakeLists.txt
-
 

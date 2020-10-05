@@ -1,17 +1,17 @@
 #!/bin/bash
 
-if [ "$#" -ne 3 ]; then
-    echo "Usage: clone_and_build_pf_repo <directory> <repository> <branch>"
+if [ "$#" -ne 4 ]; then
+    echo "Usage: clone_and_build_pf_repo <pf_libs directory> <parflow_directory> <repository> <branch>"
     exit 2
 fi
 
+LIBSDIR=$1
+PFDIR=$2
+REPO=$3
+BRANCH=$4
 
-DIR=$1
-REPO=$2
-BRANCH=$3
 
 
+./clone_pf_repo.sh $PFDIR $REPO $BRANCH 
 
-./clone_pf_repo.sh $DIR $REPO $BRANCH 
-
-./rebuild_parflow.sh $DIR
+./build_parflow.sh $LIBSDIR $PFDIR 

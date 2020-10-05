@@ -11,8 +11,16 @@
     PFLIBS=$1
     PFDIR=$2
 
+
+    if [ ! -d $PFDIR ]; then    
+     mkdir -p $PFDIR
+    fi  
+
     cd $PFDIR
    
+    #-----------------------------------------------------------------------------
+    # Script Env variables we need
+    #-----------------------------------------------------------------------------
     export CORE_COUNT=2
     export PARFLOW_DIR=$PFDIR
     export OMPI_DIR=${PFLIBS}/ompi
@@ -25,16 +33,13 @@
     
     #-----------------------------------------------------------------------------
     # Parflow configure and build
-    #-----------------------------------------------------------------------------
+    #-----------------------------------------------------------------------------          
     
-    #PARFLOW_MPIEXEC_EXTRA_FLAGS="--mca mpi_yield_when_idle 1 --oversubscribe --allow-run-as-root"
-        
-    git clone -b master --single-branch https://github.com/parflow/parflow.git parflow && \
     mkdir -p build install && \
     cd build && \
     cmake3 ../parflow \
     -DPARFLOW_AMPS_LAYER=mpi1 \
-    -DPARFLOW_AMPS_SEQUENTIAL_IO=FALSE \
+    -DPARFLOW_AMPS_SEQUENTIAL_IO=TRUE \
     -DHYPRE_ROOT=${HYPRE_DIR} \
     -DSILO_ROOT=${SILO_DIR} \
     -DHDF5_ROOT=${HDF5_DIR} \
@@ -43,5 +48,4 @@
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=${PARFLOW_DIR}/install && \
     make install -j${CORE_COUNT} && \
-    cd .. && \
-    rm -fr parflow build
+    cd ..  
