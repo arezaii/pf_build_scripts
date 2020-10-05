@@ -106,4 +106,4 @@ and the resulting directory structure:
 
 ## Troubleshooting
 
-
+Access denied! - Make sure you specified a `<base_directory>` that is writeable. On shared environments, something under `scratch` or `home` would be appropriate.
