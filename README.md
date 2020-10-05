@@ -6,7 +6,9 @@ A set of scripts for downloading and building necessary libraries and the ParFlo
 
 * dl_and_build_libs.sh - downloads the and builds necessary libraries
 * clone_and_build_pf_repo.sh - clone a specific ParFlow repository and branch, then build
-
+* rebuild_parflow.sh - rebuild ParFlow from existing sources
+* README.md - this file
+* LICENSE - license file
 
 ## Requirements
 
@@ -101,6 +103,14 @@ and the resulting directory structure:
     ├── hypre
     ├── ompi
     └── silo
+```
+
+### Rebuilding ParFlow
+
+Once the libraries are downloaded and built, you may have a need to rebuild ParFlow from existing sources.
+
+```
+./rebuild_parflow.sh 
 ```
 
 
