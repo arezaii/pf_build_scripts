@@ -29,12 +29,12 @@ Should be able to get these for your distribution if not included. Most shared s
 
 ### Environment Vars
 
-In almost all cases, you will need to point cmake to specific libraries or headers for your system. The build script does this using environt vars. Here are the ones you should set:
+In almost all cases, you will need to point cmake to specific libraries or headers for your system. The build script does this using environment vars. Here are the ones you should set:
 
 * PARFLOW_DIR - the base directory for ParFlow - often parflow_dir/install
 
 
-###Update PATH-
+### Update PATH
 
 It is important to update the PATH variable to include the OpenMPI installation. 
 
@@ -42,7 +42,7 @@ It is important to update the PATH variable to include the OpenMPI installation.
 export PATH=${OMPI_DIR}/bin:$PATH
 ```
 
-This prepends the OMPI_DIR/bin location to the existing PATH, ensuring our version of OMPI will be used when mpirun is called.
+This prepends the OMPI_DIR/bin location to the existing PATH, ensuring our version of OMPI will be used when `mpirun` is called.
 
 ## Usage
 
