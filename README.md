@@ -12,18 +12,18 @@ A set of scripts for downloading and building necessary libraries and the ParFlo
 
 ## Requirements
 
-### CMake
+#### CMake
 
-### Git
+#### Git
 
-### Wget
+#### Wget
 
-### C/C++ compiler
+#### C/C++ compiler
 
-### Fortran compiler
+#### Fortran compiler
 
 
-### TCL/TK and Headers
+#### TCL/TK and Headers
 
 Should be able to get these for your distribution if not included. Most shared systems have them available as modules.
 
@@ -56,6 +56,8 @@ For a first time installation, ensure you have met the requirements, then instal
 ./dl_and_build_libs.sh <base_directory>
 ```
 
+Where `<base_directory>` is an absolute, not relative, path to the directory you want to download and install the required libraries to.
+
 This should produce a directory structure like this in `<base_directory>`
 
 ```
@@ -79,6 +81,13 @@ If everything goes OK you can move on to step 2, cloning and building ParFlow:
 ```
 ./clone_and_build_parflow.sh <pf_libs directory> <parflow_install directory> <parflow repository> <branch>
 ```
+
+where:
+
+* `<pf_libs directory>` is the absolute path to the directory used to download and install the required libraries in the previous step. 
+* `<parflow_install directory>` is the absolute path to the directory to download and install ParFlow in
+* `<parflow repository>` is cloneable remote repository, such as the ParFlow github repository
+* `<branch>` is the branch name to clone and build, typically master
 
 example usage:
 ```
@@ -119,3 +128,5 @@ Once the libraries are downloaded and built, you may have a need to rebuild ParF
 Access denied! - Make sure you specified a `<base_directory>` that is writeable. On shared environments, something under `scratch` or `home` would be appropriate.
 
 CMake version wrong! - Some systems have the cmake executable as cmake3, you can edit the build_parflow.sh script to modify the cmake command. Or you can download a newer version of cmake and update the PATH similar to the above description.
+
+Generally in this project, directories given as arguments are expected to be absolute rather than relative paths.
